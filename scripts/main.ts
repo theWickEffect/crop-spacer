@@ -15,11 +15,12 @@ title.textContent = "Garden Calc";
 let StartFeetButton = document.createElement("button");
 StartFeetButton.textContent = "Start Feet";
 let StartInchesButton = document.createElement("button");
-StartFeetButton.textContent = "Start Inches";
+StartInchesButton.textContent = "Start Inches";
 let incrementButton = document.createElement("button");
 incrementButton.textContent = "Set Increment";
 let nextBedButton = document.createElement("button");
 nextBedButton.textContent = "Next Bed";
+nextBedButton.setAttribute("class","nextBed");
 let incrementText = document.createElement("p");
 let increment = 63
 let incrementFeet = Math.floor(increment/12);
@@ -31,16 +32,18 @@ let bedCount = 0;
 // let inches = 0;
 let startText = document.createElement("p");
 let results = document.createElement("div");
+results.setAttribute("class","results");
 
 UpdateStartText();
 UpdateIncrementText();
 GenerateHomePage();
 
+
 function UpdateStartText() {
-    startText.textContent = `Start: ${startFeet} feet, ${startInches} inches`
+    startText.textContent = `Start:   ${startFeet} feet, ${startInches} inches`
 }
 function UpdateIncrementText() {
-    incrementText.textContent = `Increment: ${increment} inches (${incrementFeet} feet, ${incrementInches} inches)`
+    incrementText.textContent = `Increment:   ${increment} inches (${incrementFeet} feet, ${incrementInches} inches)`
 }
 StartFeetButton.onclick = () =>{
     ResetResults();
@@ -76,19 +79,23 @@ nextBedButton.onclick = ()=>{
         startInches -= 12;
         startFeet++;
     }
+    GenerateResults();
 }
 function GenerateResults(){
     bedCount++;
     const nextBed = document.createElement("p");
-    nextBed.textContent = `Bed ${bedCount}: ${startFeet} feet, ${startInches} inches`
+    nextBed.textContent = `Bed ${bedCount}:   ${startFeet} feet, ${startInches} inches`
     results.appendChild(nextBed);
 }
 
 function ResetResults(){
     gridContainer?.removeChild(results);
+    gridContainer?.removeChild(nextBedButton);
     results = document.createElement("div");
+    results.setAttribute("class","results");
     results.appendChild(startText);
     gridContainer?.appendChild(results);
+    gridContainer?.appendChild(nextBedButton);
     bedCount = 0;
 }
 
@@ -101,10 +108,11 @@ function GenerateHomePage(){
     homepage.appendChild(incrementText);
     homepage.appendChild(StartFeetButton);
     homepage.appendChild(StartInchesButton);
-
+    // homepage.appendChild(nextBedButton);
     if(gridContainer !== null){
         gridContainer.appendChild(homepage);
         gridContainer.appendChild(results);
         results.appendChild(startText);
+        gridContainer.appendChild(nextBedButton)
     }
   }
