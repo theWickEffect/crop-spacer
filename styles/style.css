@@ -50,25 +50,6 @@ h2{
 }
 
 
-/* .master{
-    grid-column: 0,1;
-    grid-row: 3,4;
-    border: 3px,white;
-}
-.distortion{
-    grid-column: 1,2;
-    grid-row: 3,4;
-    border: 3px,white;
-} */
-/* p,
-li{
-    max-width:540px;
-    font-size: 13px;
-    letter-spacing: 1px;
-    font-weight: 200;
-    margin-left:24px;
-} */
-
 h5{
     font-family: 'Protest Strike';
     font-size: 18px;
